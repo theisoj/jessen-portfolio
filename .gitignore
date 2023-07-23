@@ -1,0 +1,6 @@
+.next
+.vscode
+.vercel
+sanity
+node_modules
+.env*.local
