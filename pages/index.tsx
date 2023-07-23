@@ -63,6 +63,7 @@ export default function Home({
       </section>
 
       <Footer pageInfo={pageInfo} />
+      <h1>Paska</h1>
     </div>
   )
 }
