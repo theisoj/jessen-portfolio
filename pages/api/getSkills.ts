@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import { groq } from "next-sanity";
-import { sanityClient } from "../../sanity";
+import { client } from "../../sanity";
 import { Skill } from "../../typings";
 
 const query = groq`
@@ -16,7 +16,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const skills: Skill[] = await sanityClient.fetch(query);
+  const skills: Skill[] = await client.fetch(query);
 
   res.status(200).json({ skills });
 }
