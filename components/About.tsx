@@ -3,7 +3,7 @@ import { PageInfo } from "@/typings";
 import { motion } from "framer-motion"
 
 type Props = {
-  pageInfo: PageInfo;
+  pageInfo: PageInfo | undefined;
 };
 
 export default function About({ pageInfo }: Props) {
@@ -40,7 +40,7 @@ export default function About({ pageInfo }: Props) {
           taustaa
         </h4>
         <p className="text-lg">
-          {pageInfo.backgroundInformation}
+          {pageInfo?.backgroundInformation}
         </p>
       </div>
     </motion.div>

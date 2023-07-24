@@ -3,7 +3,7 @@ import { PageInfo } from "@/typings"
 import Link from "next/link"
 
 type Props = {
-    pageInfo: PageInfo
+    pageInfo: PageInfo | undefined
 }
 
 export default function Footer({ pageInfo }: Props) {

@@ -5,7 +5,7 @@ import { PageInfo } from "../typings";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Props = {
-  pageInfo: PageInfo;
+  pageInfo: PageInfo | undefined;
 };
 
 type Inputs = {
@@ -22,7 +22,7 @@ function ContactMe({ pageInfo }: Props) {
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    window.location.href = `mailto:${pageInfo.email}?subject=${data.subject}&body=Hei, minun nimi on ${data.name}. ${data.message}`;
+    window.location.href = `mailto:${pageInfo?.email}?subject=${data.subject}&body=Hei, minun nimi on ${data.name}. ${data.message}`;
   };
 
   return (
@@ -45,8 +45,8 @@ function ContactMe({ pageInfo }: Props) {
         <div className="space-y-10">
           <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-[#F7AB0A] h-7 w-7 animate-pulse" />
-            <a className="text-2xl" href={`mailto:${pageInfo.email}`}>
-              {pageInfo.email}
+            <a className="text-2xl" href={`mailto:${pageInfo?.email}`}>
+              {pageInfo?.email}
             </a>
           </div>
         </div>

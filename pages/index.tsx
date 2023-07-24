@@ -1,4 +1,6 @@
-import type { GetStaticProps } from "next"
+"use client"
+
+import type { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from "next"
 import Head from "next/head"
 import Header from "@/components/Header"
 import Hero from "@/components/Hero"
@@ -14,6 +16,7 @@ import ContactMe from "@/components/ContactMe"
 import Skills from "@/components/Skills"
 import Projects from "@/components/Projects"
 import Footer from "@/components/Footer"
+import { getUrl } from "nextjs-current-url/server"
 
 type Props = {
   pageInfo: PageInfo
@@ -29,7 +32,7 @@ export default function Home({
   pageInfo,
   experiences,
   socials,
-}: Props) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className="snap-y snap-mandatory h-screen overflow-y-scroll scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80 bg-[rgb(36,36,36)] text-white z-0">
       <Head>
@@ -67,12 +70,14 @@ export default function Home({
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const pageInfo: PageInfo = await fetchPageInfo()
-  const experiences: Experience[] = await fetchExperiences()
-  const skills: Skill[] = await fetchSkills()
-  const projects: Project[] = await fetchProjects()
-  const socials: Social[] = await fetchSocial()
+export const getServerSideProps: GetServerSideProps<Props> = async (context: GetServerSidePropsContext) => {
+  const url = getUrl({ req: context.req })
+
+  const pageInfo: PageInfo = await fetchPageInfo(url?.href!)
+  const experiences: Experience[] = await fetchExperiences(url?.href!)
+  const skills: Skill[] = await fetchSkills(url?.href!)
+  const projects: Project[] = await fetchProjects(url?.href!)
+  const socials: Social[] = await fetchSocial(url?.href!)
 
   return {
     props: {
@@ -80,11 +85,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       experiences,
       skills,
       projects,
-      socials,
-    },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 300,
+      socials
+    }
   }
 }
