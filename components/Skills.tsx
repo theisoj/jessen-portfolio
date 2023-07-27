@@ -31,7 +31,7 @@ function Skills({ skills }: Props) {
 
         {/* Get second half of skills and map with direction left */}
         {skills?.slice(skills.length / 2, skills.length).map((skill) => (
-          <Skill key={skill._id} skill={skill} directionLeft />
+          <Skill key={skill._id} skill={skill} directionTop />
         ))}
       </div>
     </motion.div>

@@ -6,7 +6,7 @@ export const fetchPageInfo = async (address: string) => {
 
     const pageInfo: PageInfo = res.data.pageInfo;
 
-    console.log("fetching", pageInfo);
+    // console.log("fetching", pageInfo);
 
     return pageInfo;
 };

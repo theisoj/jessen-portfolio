@@ -1,20 +1,20 @@
 import { Cursor, useTypewriter } from "react-simple-typewriter"
 import BackgroundCircles from "./BackgroundCircles"
 import Link from "next/link"
-import { PageInfo } from "@/typings";
-import { urlFor } from "@/sanity";
+import { PageInfo } from "@/typings"
+import { urlFor } from "@/sanity"
 
 type Props = {
-  pageInfo: PageInfo | undefined;
-};
+  pageInfo: PageInfo | undefined
+}
 
 export default function Hero({ pageInfo }: Props) {
+  const listFormatter = new Intl.ListFormat("fi-fi", {
+    style: "short",
+  })
+
   const [text, count] = useTypewriter({
-    words: [
-      `Hei, minun nimeni on ${pageInfo?.name}`,
-      "Jätkä, joka ajattelee liikaa",
-      "Mutta tykkää juoda kahvia ja olla tietokoneella",
-    ],
+    words: pageInfo?.introductionTexts!,
     loop: true,
     delaySpeed: 2000,
   })
@@ -29,9 +29,9 @@ export default function Hero({ pageInfo }: Props) {
       />
       <div className="z-20 relative">
         <h2 className="tracking-[15px] text-sm uppercase text-gray-500 pb-2">
-          {pageInfo?.role}
+          {listFormatter.format(pageInfo?.roles!)}
         </h2>
-        <h1 className="text-5xl lg:text-6xl font-semibold px-10">
+        <h1 className="text-5xl lg:text-6xl font-semibold px-10 leading-[56px]">
           <span className="mr-3">{text}</span>
           <Cursor cursorColor="#F7AB0A" />
         </h1>

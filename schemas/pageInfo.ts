@@ -11,9 +11,20 @@ export default defineType({
       type: "string",
     },
     {
-      name: "role",
-      title: "Rooli",
-      type: "string",
+      name: "introductionTexts",
+      title: "Johdantotekstit",
+      type: "array",
+      of: [
+        { type: "string" }
+      ]
+    },
+    {
+      name: "roles",
+      title: "Roolit",
+      type: "array",
+      of: [
+        { type: "string" }
+      ]
     },
     {
       name: "heroImage",

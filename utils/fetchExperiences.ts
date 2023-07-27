@@ -7,7 +7,7 @@ export const fetchExperiences = async (address: string) => {
 
     const experiences: Experience[] = res.data.experiences;
 
-    console.log("fetching", experiences);
+    // console.log("fetching", experiences);
 
     return experiences;
 };

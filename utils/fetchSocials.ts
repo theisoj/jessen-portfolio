@@ -6,7 +6,7 @@ export const fetchSocial = async (address: string) => {
 
     const socials: Social[] = res.data.socials;
 
-    console.log("fetching", socials);
+    // console.log("fetching", socials);
 
     return socials;
 };
