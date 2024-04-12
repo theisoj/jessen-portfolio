@@ -52,7 +52,7 @@ export default defineType({
     },
     {
       name: "points",
-      title: "Pisteet",
+      title: "Pointit",
       type: "array",
       of: [
         {
