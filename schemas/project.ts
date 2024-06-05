@@ -33,7 +33,7 @@ export default defineType({
     {
       name: "linkToBuild",
       title: "Linkki projektiin",
-      type: "url",
+      type: "string"
     },
   ]
 })
